@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Code.Entity
+namespace Code.Entities
 {
     public abstract class Entity : MonoBehaviour
     {
