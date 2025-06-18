@@ -1,13 +1,15 @@
-﻿using Code.Core.Dependencies;
+﻿using System;
+using Code.Core.Dependencies;
+using Code.Entities;
 using Code.FSM;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Code.Players
 {
-    public class Player : MonoBehaviour, IDependencyProvider
+    public class Player : Entity, IDependencyProvider
     {
-        [field: SerializeField] public PlayerInput PlayerInput { get; private set; }
+        [field: SerializeField] public PlayerInputSO PlayerInput { get; private set; }
 
         [SerializeField] private StateDataSO[] states;
 
@@ -16,5 +18,30 @@ namespace Code.Players
         [Provide]
         public Player ProvidePlayer() => this;
 
+        protected override void Awake()
+        {
+            base.Awake();
+            _stateMachine = new EntityStateMachine(this, states);
+            
+        }
+
+        private void OnDestroy()
+        {
+            
+        }
+
+        protected override void Start()
+        {
+            _stateMachine.ChangeState("IDLE");
+        }
+
+        private void Update()
+        {
+            _stateMachine.UpdateStateMachine();
+        }
+        
+        public void ChangeState(string newStateName) => _stateMachine.ChangeState(newStateName);
+        
+        
     }
 }

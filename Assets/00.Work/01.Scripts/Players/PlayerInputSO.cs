@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace Code.Players
 {
-    [CreateAssetMenu(fileName = "PlayerInputSO", menuName = "SO", order = 0)]
+    [CreateAssetMenu(fileName = "PlayerInputSO", menuName = "Player", order = 0)]
     public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
     {
         public event Action OnAttackPressed;

@@ -17,7 +17,9 @@ namespace Code.Entities
         protected virtual void Awake()
         {
             _components = new Dictionary<Type, IEntityComponent>();
-            
+            AddComponents();
+            InitializeComponents();
+            AfterInitialize();
         }
 
         protected virtual void Start()
