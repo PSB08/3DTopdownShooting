@@ -5,13 +5,15 @@ namespace Code.Players
 {
     public class CharacterMovement : MonoBehaviour, IEntityComponent, IAfterInitialize
     {
+        //[SerializeField] private StatSO moveSpeedStat;
+   //private EntityStat _statCompo;
         [SerializeField] private float gravity = -9.8f;
         [SerializeField] private CharacterController controller;
-        
+
         public bool IsGround => controller.isGrounded;
         public bool CanManualMovement { get; set; } = true;
         private Vector3 _autoMovement;
-
+    
         private float _moveSpeed = 8f;
         private Vector3 _velocity;
         public Vector3 Velocity => _velocity;
@@ -19,22 +21,32 @@ namespace Code.Players
         private Vector3 _movementDirection;
 
         private Entity _entity;
-        
         public void Initialize(Entity entity)
         {
             _entity = entity;
+            //_statCompo = entity.GetCompo<EntityStat>();
         }
-
+    
         public void AfterInitialize()
         {
-            
+            //_moveSpeed = _statCompo.SubscribeStat(moveSpeedStat, HandleMoveSpeedChange, 1f);
         }
-        
+
+        private void OnDestroy()
+        { 
+            //_statCompo.UnSubscribeStat(moveSpeedStat, HandleMoveSpeedChange);
+        }
+
+        /*private void HandleMoveSpeedChange(StatSO stat, float currentValue, float prevValue)
+        {
+            _moveSpeed = currentValue;
+        }*/
+
         public void SetMovementDirection(Vector2 movementInput)
         {
             _movementDirection = new Vector3(movementInput.x, 0, movementInput.y).normalized;
         }
-        
+
         private void FixedUpdate()
         {
             CalculateMovement();
@@ -86,6 +98,8 @@ namespace Code.Players
         }
     
         public void SetAutoMovement(Vector3 autoMovement) => _autoMovement = autoMovement;
+
+    
         
     }
 }

@@ -7,6 +7,7 @@ namespace Code.Players
     [CreateAssetMenu(fileName = "PlayerInputSO", menuName = "Player", order = 0)]
     public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
     {
+        [SerializeField] private LayerMask whatIsGround;
         public event Action OnAttackPressed;
         public event Action OnDashPressed;
 
@@ -46,6 +47,18 @@ namespace Code.Players
         {
             if (context.performed)
                 OnDashPressed?.Invoke();
+        }
+        
+        public Vector3 GetWorldPosition()
+        {
+            Camera mainCam = Camera.main;
+            Debug.Assert(mainCam != null, "No main camera found.");
+            Ray camRay = mainCam.ScreenPointToRay(_screenPosition);
+            if (Physics.Raycast(camRay, out RaycastHit hit, mainCam.farClipPlane, whatIsGround))
+            {
+                _worldPosition = hit.point;
+            }
+            return _worldPosition;
         }
         
     }

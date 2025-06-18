@@ -8,7 +8,7 @@ namespace Code.Players.States
         public PlayerIdleState(Entity entity, int animationHash) : base(entity, animationHash)
         {
         }
-        
+
         public override void Update()
         {
             base.Update();

@@ -16,7 +16,6 @@ namespace Code.Players.States
         {
             base.Enter();
             _movement.CanManualMovement = false;
-            Debug.Log("Attack");
         }
         
         public override void Update()
@@ -26,6 +25,14 @@ namespace Code.Players.States
             {
                 _player.ChangeState("IDLE");
             }
+        }
+        
+        public override void Exit()
+        {
+            //_attackCompo.EndAttack();
+            _movement.CanManualMovement = true;
+            _movement.StopImmediately();
+            base.Exit();
         }
         
     }

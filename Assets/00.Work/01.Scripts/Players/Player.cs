@@ -1,9 +1,7 @@
-﻿using System;
-using Code.Core.Dependencies;
+﻿using Code.Core.Dependencies;
 using Code.Entities;
 using Code.FSM;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Code.Players
 {
