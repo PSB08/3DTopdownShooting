@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-namespace Blade.Core.Dependencies
+namespace Code.Core.Dependencies
 {
     [DefaultExecutionOrder(-10)]  //가장 빨리 실행되도록 한다 (기본 실행 순서) 기본적인 MonoBehaviour는 0
     public class Injector : MonoBehaviour

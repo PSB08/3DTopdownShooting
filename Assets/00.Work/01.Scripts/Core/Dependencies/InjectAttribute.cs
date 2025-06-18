@@ -1,6 +1,6 @@
 using System;
 
-namespace Blade.Core.Dependencies
+namespace Code.Core.Dependencies
 {
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Field)]
     public class InjectAttribute : Attribute

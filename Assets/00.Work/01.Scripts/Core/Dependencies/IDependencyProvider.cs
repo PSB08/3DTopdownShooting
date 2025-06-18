@@ -1,4 +1,4 @@
-namespace Blade.Core.Dependencies
+namespace Code.Core.Dependencies
 {
     public interface IDependencyProvider
     {
