@@ -1406,7 +1406,7 @@ GameObject:
   - component: {fileID: 5866666021625792138}
   - component: {fileID: 5866666021625792137}
   m_Layer: 0
-  m_Name: LittleAdventurerAndie
+  m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
